@@ -1,0 +1,207 @@
+<!-- el principio es una estructura básica de html, siempre va ser igual -->
+<!DOCTYPE html>
+<html lang="en">
+<!--en una página web hay 3 principale partes, el head(cabecera), el body (cuerpo), footer(pie de página) -->
+<head>
+  <!-- dentro del head vamos a colocar todas las librerías, complementos y demás que necesite para mi página web -->
+
+    <!--los dos  meta son por default y solo dicen el tipo de caracteres que voy a aceptar en la aplicación y características de ancho pantalla  -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- en el title se pone el nombre que vamos a ver en la pestaña cuando abrimos la aplicación -->
+    <title>Control IoT2</title>
+    <!-- para que se vea bien sin importar el tamaño de pantalla, es decir en celulares y compus se vea bien, ocupamos una libreria que se llama boostrap, entonces debemos importar esta librería mediante el link de abajo -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"crossorigin="anonymous">
+    <!-- fotawesome es para utilizar iconos -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- es la misma librería bootstrap pero llamado desde otro lado -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css
+    /bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- el bootstrap arriba lo llabamos al css, es decir al estilo, pero tambien tiene parte js (javascript) entonces debemos tambien llamar a la parte js de bootstrap -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- recuerdas que en el mini curso que te enseñe js vimos que jquery era un framework, o una herramienta de js que hacía que la utilización de js sea más facil, entonces es necesario llamarlo para ocuparlo -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- tambien es necesario llamar a nuestro programa logica.js, cuando digo llamar quiere decir declarar en la pagina web que los voy a ocupar si no los declararía aqui, no se ejecutaría el código js que esta en nuestro archivo logica.js -->
+    <script src="logica.js"></script>
+    <!-- tenemos una hoja de estilos que se llama estilos.css entoces es necesario decir que esta página web se ocupa la hoja de estilos que hicimos -->
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+<!-- el body es donde va el cógido que se va a ver -->
+<body>
+<!-- primero se inicia haciendo el menu lateral, entender esto es un poco complejo, pero no te preocupes, lo importantes es que entiendas que el menú va a tener elementos div y se ocultaran y aparecerán cuando el usuario de click -->
+
+<!-- los div son elemetos para agrupar, recuerda que podemos darle estilos o forma a las cosas mediante las clases, entonces es bueno tener todo dentro de divs para que cuando definamos estilos decir, todo lo que esta dentro de este div con nombre de clase "xxx" poner estos estilos -->
+
+<!-- por ejemplo el div de abajo, es un div que tiene 3 clases distintas, un elemento puede tener varias clases distintas, por ejemplo hay clases definidas en bootstrap con nombres ya definidos, por ejemplo la clase "toggled" ya viene con determinado estilo desde bootstrap, pero como queremos utilizarle para otras cosas, le ponemos otra clase ahi mismo para ir modificando lo que viene en bootstrap
+los otros dos nombres de clases, son nombres cualquiera que se ocuparon, como para el tema de estilos nos basamos en una plantilla hay nombres de clases no tienen sentido para nosotros, lo importante es que en el css vas a encontrar estilos para estas clases  -->
+<div class="page-wrapper chiller-theme toggled">
+  <!-- el elemento "a" es un tipo link, o sea cuando tu pasas el mouse por este elemento, el punto se va a convertir de una flecha a una manito, para que el usuario sepa que pueda dar click -->
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+
+    <!-- el elemento "i" es un icono, en este caso es el ícono con tres rayas horizontales, el típico simbolo de menu, el hecho que se llame "fas fa-bars" es porque utilizamos fontawesome y ahi se llaman asi los íconos, por ejemplo si quisieramos poner un icono de una estrella el nombre de la clase sería "fas fa-start"   -->
+    <i class="fas fa-bars"></i>
+  <!-- recuerda cada elemento que se abre se debe cerrar, por eso arriba se abrió el elemento "a" y dentro de él se puso el ícono, con lo que logramos que el ícono se ponga como un link, entonces cuando el usuario pase el mouse encima del ícono, se va a poner una mano para que sepa que puede dar click -->
+  </a>
+
+  <!-- el elemento nav, hace referencia como tal al menú, con la clase "sidebar-wrapper" jalamos el estilo de un menú lateral desde bootstrap -->
+  <nav id="sidebar" class="sidebar-wrapper">
+    <!-- recuerda div es solo para agrupar -->
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <!-- recuerda los elementos "a" es para crear link -->
+        <a href="#">Control IoT</a>
+        <div id="close-sidebar">
+          <!-- es un ícono en forma de una "x"-->
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <!-- el elemento "img" es para poner imágenes, en este caso es la imagen de foto de perfil entonces lo llamamos desde la dirección que está en el src, tiene nombre de clase img-rounded para que desde bootstrap nos muestre la imagen en forma de circulo-->
+          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <!-- span es un elemento para escribir texto -->
+          <span class="user-name">Anthony
+            <!-- strong es como las negrillas -->
+            <strong>Espinoza</strong>
+          </span>
+          <span class="user-role">Administrador</span>
+          <span class="user-status">
+            <!-- icono en forma de circulo -->
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- dentro de este div vamos a poner el menu de opciones, por ejemplo si fueramos a poner una opcion para consultar el consumo energético, deberíamos declarar dentro de esta parte  -->
+      <div class="sidebar-menu">
+        <!-- "ul"  y "li" son listas ordenas, es más o menos como decir que dentro de una "ul" pueden ir varias "li" es como que submenus -->
+        <ul>
+          <li class="header-menu">
+            <span>General</span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Administracion</span>
+              <span class="badge badge-pill badge-warning">New</span>
+            </a>
+            
+          </li>
+          
+          
+       
+          
+          
+        </ul>
+      </div>
+    
+    </div>
+   
+  </nav>
+  <!-- el "main" es el elemento de la pantalla, donde vamos a poner los botones para el control -->
+  <main class="page-content">
+    <div class="container-fluid">
+      <!-- h2 es para decir que es el título, hay h1, h2, h3 y h4; por ejemplo si quisieramos que el titulo que dice Contorl IoT sea más grande podríamos declararlo un h1 y se haría más grande -->
+      <h2>Control IoT</h2>
+      <!-- con "hr" hacemos espacio -->
+      <hr>
+      <!-- la clase "row" es de bootstrap y lo que nos dice es que estamos declarando una fila, imagínate como una tabla en word, con el row decimos que vamos a poner la primera celda horizontal. Además cada celda puede dividirse en hasta 12 columnas verticales -->
+      <div class="row">
+        <!-- cuando declaramos que es un col-md-12, decimos que lo que va dentro de este div va a ocupar todo el ancho (porque el ancho total máximo es de 12 columnas). Esto puede ser un poco complejo de explicar y de entender, te recomiendo revisar este enlace https://ajgallego.gitbook.io/bootstrap-4/sistema-de-rejilla/columnas-de-ancho-especifico ahi con un ejemplo se te va ahacer más facil entender el tema del row y del col -->
+        <div class="form-group col-md-12">
+          <p>Con la siguiente aplicación usted podrá controlar los dispositivos de su domicilio</p>
+        </div>
+
+        <!--como es un col de 5 entonces va a ocupar menos de la mitad del espacio este div (recuerda el máximo es 12)  -->
+        <div class="form-group col-md-5 luz-comedor">
+            
+
+            <!-- label es una etiqueta -->
+            <label class="switch">
+              <!-- un input es una entrada, es el botón switch de los focos, entonces cuando se aplaste este swtich vamos a leer algo en este input -->
+              <input type="checkbox" id="switch2">
+              <span class="slider round"></span>
+            </label>
+            <!-- br es un salto de línea, como un enter -->
+            <br>
+            <!-- h2 es para títulos -->
+            <h2 >Luz led</h2>
+        </div>
+        <!-- como el div anterior era de 5, hacemos un div de 1 en vacío para que exista separación entre el botón de la izquierda y el de la derecha -->
+        <div class="form-group col-md-1"></div>
+        <!-- creamos un nuevo div de 5 para que mida lo mismo que el botón de la izquierda -->
+        <div class="form-group col-md-5 luz-led">
+            
+
+            <!-- Esto es lo mismo que el switch anterior, pero con otro nombre para poder leerlo -->
+            <label class="switch">
+            <input type="checkbox" id="switch">
+            <span class="slider round"></span>
+            </label>
+            <br>
+            <h2>Foco entrada</h2>
+        
+        </div>
+        <!-- ibamos 3 divs, uno de tamaño 5, uno de tamaño 1 y uno de tamaño 5... entre los 3 sumamos un tamaño de 11, entonces necesitamos dejar un div de 1 en vacío para decir que hemos llenado toda esa fila -->
+        <div class="form-group col-md-1"></div>
+
+        <!-- creamos un div de 12 es decir de tamaño máximo, pero solo con br(saltos de linea) es solo para separar los botones de arriba con los de abajo -->
+        <div class="form-group col-md-12">
+            <br><br><br>
+        </div>
+
+        <!-- para los botones de abajo, es decir de las cortinas, vamos a hacer los mismo que arriba, un div de 5, un div de 1, un div de 5 y un div de 1 (para sumar 12) -->
+        <div class="form-group col-md-5 cortina1">
+        <!-- Aqui en vez de inputs, ocupamos botones,  -->
+        <button class="button button1" id="btnCortina1"> 
+          <label id="cortina1Label">Abrir</label>  
+        </button>
+        
+            <h2>Cortina 1</h2>
+        </div>
+        <div class="form-group col-md-1"></div>
+        <div class="form-group col-md-5 cortina2">
+            
+        <button class="button button2" id="btnCortina2"><p id="cortina2Label">Abrir</p> </button>
+        
+            <h2>Cortina 2</h2>
+        </div>
+        <div class="form-group col-md-1"></div>
+        
+        
+      </div>
+      
+
+      <!-- El footer es el pie de pagina, ahi solo ponemos el realizado por:  -->
+      <footer class="text-center">
+          <br> <br>
+        <div class="mb-2">
+          <!-- small es una propiedad que hace que la letra se ponga más pequeña de lo normal -->
+          <small>
+            © 2021 realizado  by - <a target="_blank" rel="noopener noreferrer" href="https://azouaoui.netlify.com">
+              Anthony Espinoza
+            </a>
+          </small>
+        </div>
+
+      </footer>
+    </div>
+  </main>
+  
+</div>
+    <!-- así como arriba en el header ocupamos librerías externas, tambien las podemos llamar desde aqui, esto es por el tema (diseño) plantilla que se utilizo, es para hacerlo más bonito no más -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    
+</body>
+
+</html>
